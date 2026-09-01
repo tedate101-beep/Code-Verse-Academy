@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeVerse Academy | أكاديمية المبرمجين الأولى للفول ستاك</title>
+
+<!-- html2canvas لتحويل الشهادة إلى صورة PNG على الموبايل -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Tahoma,sans-serif;
+    background:#070b14;
+    color:#fff;
+    line-height:1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* ================= HEADER & NAVBAR (FIXED RESPONSIVE) ================= */
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:#090e19;
+    border-bottom:1px solid #27334a;
+    width: 100%;
+}
+
+.navbar{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+    min-height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 10px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:20px;
+    font-weight:bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.logo img{
+    width:38px;
+    height:38px;
+    object-fit:contain;
+    border-radius:8px;
+    flex-shrink: 0;
+}
+
+.gold{
+    color:#d9ad55;
+}
+
+.menu-toggle-btn {
+    background: #131d2e;
+    color: #d9ad55;
+    border: 1px solid #2b3952;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn{
+    padding:9px 14px;
+    border-radius:10px;
+    border:1px solid #2b3952;
+    background:#131d2e;
+    color:#fff;
+    cursor:pointer;
+    font-size:14px;
+    transition: 0.2s ease;
+}
+
+.btn:hover{
+    border-color: #d9ad55;
+}
+
+.btn-gold{
+    background:#d9ad55;
+    color:#111;
+    border-color:#d9ad55;
+    font-weight:bold;
+}
+
+.btn-gold:hover{
+    background:#c49942;
+}
+
+.btn-danger{
+    background:#8b0000;
+    color:#fff;
+    border-color:#ff4d4d;
+}
+
+.btn-success{
+    background:#1b4332;
+    color:#72efdd;
+    border-color:#2d6a4f;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: #0d1526;
+    border-left: 1px solid #27334a;
+    z-index: 1001;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s ease;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #233044;
+    padding-bottom: 15px;
+}
+
+.close-sidebar-btn {
+    background: transparent;
+    border: none;
+    color: #ff9999;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: #131d2e;
+    border: 1px solid #2b3952;
+    color: #fff;
+    font-size: 14px;
+    transition: 0.2s;
+    text-align: right;
+    width: 100%;
+}
+
+.sidebar-links a:hover {
+    border-color: #d9ad55;
+    background: #1a283e;
+}
+
+/* ================= CONTAINER & SECTIONS ================= */
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.hero{
+    min-height:450px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+    padding: 20px 0;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero-small{
+    color:#d9ad55;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1px;
+    background: rgba(217, 173, 85, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    border: 1px solid rgba(217, 173, 85, 0.3);
+}
+
+.hero h1{
+    font-size:clamp(28px, 5vw, 55px);
+    line-height:1.25;
+    margin:18px 0;
+}
+
+.hero p{
+    color:#aab4c4;
+    font-size:16px;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.hero-logo{
+    width:280px;
+    height:280px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-logo img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    filter:drop-shadow(0 0 30px rgba(217, 173, 85, 0.3));
+}
+
+/* MOTIVATION CODE EDITOR WIDGET */
+.code-box {
+    background: #050913;
+    border: 1px solid #233044;
+    border-radius: 14px;
+    padding: 16px;
+    margin: 25px 0 10px;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.code-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #1a273e;
+    padding-bottom: 8px;
+}
+.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+.code-title { color: #64748b; font-size: 12px; font-family: monospace; margin-left: 8px; }
+.code-body { font-family: 'Courier New', Courier, monospace; color: #cbd5e1; font-size: 14px; line-height: 1.6; margin: 0; overflow-x: auto; }
+.keyword { color: #c792ea; font-weight: bold; }
+.variable { color: #82aaff; }
+.function { color: #80cbc4; }
+.code-caption { color: #d9ad55; font-size: 14px; font-weight: bold; margin-top: 12px; text-align: right; }
+
+.motivation-banner {
+    background: linear-gradient(135deg, #101b2f 0%, #0d1526 100%);
+    border: 2px dashed #d9ad55;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px 0 50px;
+    text-align: center;
+}
+
+.motivation-banner h3 {
+    color: #d9ad55;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.motivation-banner p {
+    color: #cbd5e1;
+    font-size: 15px;
+    max-width: 850px;
+    margin: 0 auto 15px;
+}
+
+section{
+    padding:50px 0;
+    border-bottom: 1px solid #172338;
+}
+
+.section-title{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:10px;
+    color: #fff;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:#aab4c4;
+    font-size:15px;
+    margin-bottom:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:20px;
+}
+
+.card{
+    background:#101827;
+    border:1px solid #26344b;
+    border-radius:18px;
+    padding:20px;
+    transition:.25s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#d9ad55;
+}
+
+.card-icon{
+    height:70px;
+    border-radius:14px;
+    background:#080f1d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#d9ad55;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:15px;
+    border: 1px solid #1a273d;
+}
+
+.badge-price {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+.badge-free { background: #1b4332; color: #72efdd; }
+.badge-paid { background: #4a1525; color: #ff9ebb; }
+.badge-owned { background: #003049; color: #669bbc; }
+
+/* DEVELOPER SECTION */
+.dev-card {
+    background: #0d1526;
+    border: 2px solid #d9ad55;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 20px;
+}
+.dev-contacts {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+.dev-btn {
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #131d2e;
+    border: 1px solid #2b3952;
+    color: #fff;
+}
+
+/* CHAT SECTION */
+.chat-box {
+    background: #101827;
+    border: 1px solid #26344b;
+    border-radius: 18px;
+    padding: 20px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 5px;
+    margin-bottom: 15px;
+}
+.chat-msg {
+    background: #080f1d;
+    border: 1px solid #233044;
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 85%;
+}
+.chat-msg .sender {
+    font-size: 12px;
+    color: #d9ad55;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.chat-msg .text {
+    font-size: 14px;
+    color: #e1e7ed;
+}
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+}
+
+/* MODALS & FORMS */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000c;
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:550px;
+    background:#101827;
+    border:1px solid #33435d;
+    border-radius:18px;
+    padding:25px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.input, select, textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    background:#080f1d;
+    color:#fff;
+    border:1px solid #2c3b54;
+    border-radius:9px;
+    outline:none;
+    font-family: inherit;
+}
+
+.input:focus, select:focus, textarea:focus{
+    border-color:#d9ad55;
+}
+
+.message{
+    margin-top:12px;
+    color:#ff9999;
+    font-size: 14px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 13px;
+}
+.admin-table th, .admin-table td {
+    border: 1px solid #27334a;
+    padding: 8px 10px;
+    text-align: right;
+}
+.admin-table th {
+    background: #131d2e;
+    color: #d9ad55;
+}
+
+/* CERTIFICATE LUXURY DESIGN */
+.certificate-container {
+    background: #fff;
+    color: #111;
+    padding: 35px;
+    border: 10px double #d9ad55;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 20px rgba(217,173,85,0.4);
+}
+.certificate-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #0d1526;
+    margin-bottom: 5px;
+}
+.certificate-subtitle {
+    font-size: 14px;
+    color: #d9ad55;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.certificate-name {
+    font-size: 24px;
+    color: #0b1326;
+    font-weight: bold;
+    margin: 18px 0 10px;
+    text-decoration: underline;
+    text-decoration-color: #d9ad55;
+}
+
+footer{
+    border-top:1px solid #26344b;
+    text-align:center;
+    padding:25px;
+    color:#8895a9;
+    margin-top: auto;
+    font-size: 14px;
+    background: #080d19;
+}
+
+@media(max-width:850px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        justify-content:center;
+        padding:30px 0;
+    }
+    .hero-logo{
+        width:180px;
+        height:180px;
+        order:-1;
+    }
+    .hero-buttons{
+        justify-content:center;
+    }
+}
+
+@media(max-width: 480px) {
+    .logo span {
+        font-size: 16px;
+    }
+    .logo img {
+        width: 32px;
+        height: 32px;
+    }
+    .menu-toggle-btn {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+<nav class="navbar">
+<a href="#" class="logo">
+<img src="logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1005/1005141.png'">
+<span>CodeVerse <span class="gold">Academy</span></span>
+</a>
+
+<button class="menu-toggle-btn" id="openSidebarBtn">
+ ☰ القائمة
+</button>
+</nav>
+</header>
+
+<!-- ================= SIDEBAR & OVERLAY ================= -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div>
+        <div class="sidebar-header">
+            <span class="gold" style="font-weight:bold; font-size: 18px;">تصفح المنصة</span>
+            <button class="close-sidebar-btn" id="closeSidebarBtn">✕</button>
+        </div>
+
+        <nav class="sidebar-links">
+            <a href="#courses" class="sidebar-link">📚 مسارات الفول ستاك الشاملة</a>
+            <a href="#projects" class="sidebar-link">🚀 تسليم المشاريع والشهادات</a>
+            <a href="#developer" class="sidebar-link">👑 عن المطور والمهندس</a>
+            <a href="#groups" class="sidebar-link">📢 الجروبات والمجتمعات</a>
+            <a href="#quizzes" class="sidebar-link">📝 الاختبارات والتقييمات</a>
+            <a href="#chat" class="sidebar-link">💬 مجتمع مبرمجي CodeVerse</a>
+        </nav>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:10px;">
+        <button id="loginButton" class="btn">تسجيل الدخول</button>
+        <button id="adminModalBtn" class="btn btn-gold">⚙️ لوحة التحكم <span id="adminPendingBadge" style="display:none; background:red; color:#fff; border-radius:50%; padding:2px 6px; font-size:11px;">!</span></button>
+    </div>
+</aside>
+
+<!-- ================= MAIN ================= -->
+<main>
+
+<!-- HERO -->
+<section>
+<div class="container">
+<div class="hero">
+<div class="hero-content">
+<div class="hero-small">🔥 THE NEXT-GEN FULL-STACK ACADEMY</div>
+<h1>ابنِ مستقبلك. <span class="gold">اكتب الكود.</span> احترف الفول ستاك.</h1>
+<p>مرحباً بك في <b>CodeVerse Academy</b> — المنصة الأقوى والأشمل لتعلم البرمجة وتطوير الويب من الصفر حتى الاحتراف. صُممت مساراتنا بعناية لتغطية كل تقنيات الـ Full-Stack مع تطبيق عملي وتقييم مباشر لمشاريعك وإصدار شهادات معتمدة!</p>
+
+<!-- MOTIVATION CODE BLOCK -->
+<div class="code-box" dir="ltr">
+    <div class="code-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="code-title">Motivation.js</span>
+    </div>
+    <pre class="code-body"><code><span class="keyword">while</span> (<span class="variable">student</span>.hasDream) {
+    <span class="function">learnFullStack</span>();
+    <span class="function">buildProjects</span>();
+    <span class="function">neverGiveUp</span>();
+}</code></pre>
+    <div class="code-caption" dir="rtl">💡 "النجاح مش صدفة.. النجاح استمرار وتوفيق ربنا وطموحك بيكبر مع كل سطر كود!"</div>
+</div>
+
+<div class="hero-buttons" style="margin-top: 20px;">
+<a href="#courses" class="btn btn-gold">استكشف مسارات الفول ستاك 🚀</a>
+<a href="#projects" class="btn">سلم مشروعك واحصل على شهادتك 📜</a>
+</div>
+</div>
+<div class="hero-logo">
+<img src="logo.png" alt="CodeVerse Academy" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1005/1005141.png'">
+</div>
+</div>
+
+<!-- MOTIVATION BANNER -->
+<div class="motivation-banner">
+    <h3>💡 هل أنت جاهز لتكون المبرمج الذي تتمناه الشركات؟</h3>
+    <p>البرمجة ليست مجرد أكواد تحفظها، بل مهارة تبني بها مشاريع حقيقية وتغير بها حياتك! في CodeVerse Academy نوفر لك الخريطة الكاملة بدون تشتيت. انضم لمجتمعنا وشارك المنصة مع أصدقائك لنبني جيل المبرمجين الأقوى!</p>
+    <button class="btn btn-gold" onclick="navigator.clipboard.writeText(window.location.href); alert('تم نسخ رابط المنصة! شاركه مع أصدقائك الآن 🚀');">🔗 شارك المنصة مع زملائك</button>
+</div>
+
+</div>
+</section>
+
+<!-- ================= COURSES ================= -->
+<section id="courses">
+<div class="container">
+<h2 class="section-title">📚 خارطة طريق الفول ستاك الشاملة (Full-Stack Roadmap)</h2>
+<p class="section-subtitle">اختر المسار الذي ترغب في تعلمه وابدأ رحلة الاحتراف فوراً</p>
+<div id="coursesContainer" class="grid"></div>
+</div>
+</section>
+
+<!-- ================= PROJECTS & CERTIFICATES ================= -->
+<section id="projects">
+<div class="container">
+<h2 class="section-title">🚀 تسليم المشاريع للحصول على الشهادات المعتمدة</h2>
+<p class="section-subtitle">بعد إتمامك لأي مسار تعليمي، قم برفع مشروعك لمراجعته وتقييمه وإصدار شهادة معتمدة لك</p>
+<div style="margin-bottom: 25px; text-align: center;">
+    <button class="btn btn-gold" id="addProjectBtn">+ رفع مشروع جديد للتقييم</button>
+</div>
+<div id="projectsContainer" class="grid"></div>
+</div>
+</section>
+
+<!-- ================= DEVELOPER SECTION ================= -->
+<section id="developer">
+<div class="container">
+<h2 class="section-title">👨‍💻 عن المطور ومؤسس الأكاديمية</h2>
+<div class="dev-card">
+    <h2 style="color: #d9ad55; margin-bottom: 5px;">م. وائل محمد عبد الجواد</h2>
+    <p style="color: #aab4c4; font-size: 14px;">Full-Stack Web Developer | Graphic & UI/UX Designer | Electrical Power Engineering Student</p>
+    
+    <div style="margin: 20px 0;">
+        <h3 style="color: #fff; margin-bottom: 10px; font-size: 16px;">📞 للتواصل المباشر والاستفسارات:</h3>
+        <div class="dev-contacts">
+            <a href="https://wa.me/201069343051" target="_blank" class="dev-btn">🟢 واتساب (1): 01069343051</a>
+            <a href="https://wa.me/201515855823" target="_blank" class="dev-btn">🟢 واتساب (2): 01515855823</a>
+            <a href="https://t.me/201069343051" target="_blank" class="dev-btn">✈️ تليجرام: 01069343051</a>
+        </div>
+    </div>
+
+    <div style="margin-top: 25px;">
+        <h3 style="color: #fff; margin-bottom: 15px; font-size: 16px;">🌟 أحدث المنصات والمشاريع الرسمية:</h3>
+        <div class="grid">
+            <div class="card">
+                <h3>تطبيق المصحف المعلم 📖</h3>
+                <p>تطبيق شامل للمصحف التعليمي والاستماع للتلاوات.</p>
+                <a href="https://www.appcreator24.com/app4150892-82xg97" target="_blank" class="btn btn-gold" style="margin-top: 10px; text-align: center;">تحميل التطبيق 📲</a>
+            </div>
+
+            <div class="card">
+                <h3>WM Engineering Group 🏢</h3>
+                <p>موقع شركة WM للهندسة والخدمات التقنية والتطوير.</p>
+                <a href="https://tedate101-beep.github.io/WM-Engineering-Groub/" target="_blank" class="btn btn-gold" style="margin-top: 10px; text-align: center;">زيارة الموقع 🔗</a>
+            </div>
+
+            <div class="card">
+                <h3>بوابة الأذكار والأحاديث 🕌</h3>
+                <p>منصة شاملة للأذكار اليومية والأحاديث النبوية الشريفة.</p>
+                <a href="https://tedate101-beep.github.io/Islamic_Full_Azkar_And_Hadith/" target="_blank" class="btn btn-gold" style="margin-top: 10px; text-align: center;">زيارة البوابة 🔗</a>
+            </div>
+
+            <div class="card">
+                <h3>مجتمعات الأكاديمية 🌐</h3>
+                <p>تابع جديد الشروحات والتصاميم عبر صفحاتنا الرسمية:</p>
+                <div style="display: flex; gap: 8px; flex-direction: column; margin-top: 10px;">
+                    <a href="https://www.facebook.com/share/1QYkdAVgMx/" target="_blank" class="btn" style="text-align: center;">صفحة الفيسبوك 📘</a>
+                    <a href="https://tiktok.com/@wm.engineering.gr" target="_blank" class="btn" style="text-align: center;">قناة التيك توك 🎵</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- ================= GROUPS SECTION ================= -->
+<section id="groups">
+<div class="container">
+<h2 class="section-title">📢 المجتمعات والجروبات الرسمية</h2>
+<p class="section-subtitle">انضم لجروبات التليجرام والواتساب لتستفيد من النقاشات وتشارك حلول الأكواد</p>
+<div id="studentGroupsContainer" class="grid"></div>
+</div>
+</section>
+
+<!-- ================= QUIZZES & ASSIGNMENTS ================= -->
+<section id="quizzes">
+<div class="container">
+<h2 class="section-title">📝 التقييمات والاختبارات البرمجية</h2>
+<p class="section-subtitle">قوّ مهاراتك واختبر مستواك الفني عبر التحديات</p>
+<div id="quizzesContainer" class="grid">
+    <div class="card">
+        <h3>اختبار أساسيات HTML & CSS</h3>
+        <p>اختبر معلوماتك في هيكلة وتنسيق صفحات الويب والتجاوب مع الموبايل.</p>
+        <button class="btn btn-gold" onclick="alert('سجل دخولك لبدء الاختبار التفاعلي')">بدء الاختبار ⏱️</button>
+    </div>
+    <div class="card">
+        <h3>تحدي التفكير المنطقي بلغة JavaScript</h3>
+        <p>مجموعة أسئلة لقياس فهمك للـ ES6 والـ DOM والمصفوفات.</p>
+        <button class="btn btn-gold" onclick="alert('سجل دخولك لبدء الاختبار التفاعلي')">بدء الاختبار ⏱️</button>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- ================= CHAT SECTION ================= -->
+<section id="chat">
+<div class="container">
+<h2 class="section-title">💬 منتدى ومجتمع الطلاب</h2>
+<p class="section-subtitle">اطرح أسئلتك البرمجية وتفاعل مع زملائك المبرمجين في الوقت الفعلي</p>
+<div class="chat-box">
+    <div id="chatMessages" class="chat-messages"></div>
+    <form id="chatForm" class="chat-input-area">
+        <input type="text" id="chatInput" class="input" style="margin-bottom: 0;" placeholder="اكتب سؤالك أو استفسارك هنا..." required>
+        <button type="submit" class="btn btn-gold">إرسال 🚀</button>
+    </form>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <p>جميع الحقوق محفوظة © 2026 — <b>CodeVerse Academy</b></p>
+    <p style="font-size: 13px; color: #d9ad55; margin-top: 5px;">تم التطوير وإدارة الأكاديمية بواسطة م. وائل محمد عبد الجواد 💻</p>
+  </div>
+</footer>
+
+<!-- ================= AUTH MODAL ================= -->
+<div id="loginModal" class="modal">
+<div class="modal-box">
+<h2 id="authTitle">تسجيل الدخول</h2>
+<form id="loginForm">
+<input class="input" id="authName" type="text" placeholder="الاسم الكامل" style="display: none;">
+<input class="input" id="authPhone" type="tel" placeholder="رقم الهاتف" style="display: none;">
+<input class="input" id="loginEmail" type="email" placeholder="البريد الإلكتروني" required>
+<input class="input" id="loginPassword" type="password" placeholder="كلمة المرور" required>
+<button class="btn btn-gold" type="submit" id="authSubmitBtn" style="width: 100%;">دخول</button>
+<p style="margin-top: 15px; font-size: 13px; text-align: center; cursor: pointer; color: #d9ad55;" id="toggleAuthMode">ليس لديك حساب؟ إنشاء حساب جديد</p>
+<div id="loginMessage" class="message"></div>
+</form>
+</div>
+</div>
+
+<!-- ================= VODAFONE CASH PAYMENT MODAL ================= -->
+<div id="paymentModal" class="modal">
+<div class="modal-box">
+<h2 style="color: #d9ad55; margin-bottom: 10px;">💳 اشتراك في كورس مدفوع</h2>
+<p style="color:#aab4c4; font-size:14px; margin-bottom:15px;">لفتح هذا الكورس، يرجى إتمام عملية الدفع عبر <b>فودافون كاش</b> وإرفاق صورة الإيصال:</p>
+
+<div style="background:#080f1d; padding:15px; border-radius:12px; border:1px dashed #d9ad55; margin-bottom:15px; text-align:center;">
+    <p style="font-size:13px; color:#aaa;">رقم التحويل (فودافون كاش):</p>
+    <h3 style="color:#d9ad55; font-size:22px; margin:5px 0;" id="vodafoneNumberDisplay">01069343051</h3>
+    <p style="font-size:13px; color:#fff;">سعر الكورس: <b id="paymentCoursePrice" style="color:#72efdd;">150 ج.م</b></p>
+</div>
+
+<form id="paymentForm">
+    <input type="hidden" id="payCourseId">
+    <input type="hidden" id="payCourseTitle">
+    
+    <label style="font-size:13px; color:#d9ad55;">1. قم بتحويل المبلغ للرقم أعلاه.</label><br>
+    <label style="font-size:13px; color:#d9ad55; display:block; margin: 8px 0 5px;">2. ارفع صورة/لقطة شاشة (إيصال التحويل):</label>
+    <input class="input" id="payReceiptImage" type="file" accept="image/*" required>
+    
+    <button class="btn btn-gold" type="submit" style="width: 100%; margin-top:10px;">إرسال إيصال التحويل للمراجعة 📤</button>
+    <button class="btn btn-danger" type="button" onclick="document.getElementById('paymentModal').classList.remove('active')" style="width: 100%; margin-top: 8px;">إلغاء</button>
+</form>
+</div>
+</div>
+
+<!-- ================= ADMIN PASSWORD MODAL ================= -->
+<div id="adminAuthModal" class="modal">
+<div class="modal-box">
+<h2>دخول لوحة التحكم</h2>
+<form id="adminAuthForm">
+<input class="input" id="adminPassInput" type="password" placeholder="أدخل كلمة سر الأدمن" required>
+<button class="btn btn-gold" type="submit" style="width: 100%;">تحقق ودخول</button>
+<div id="adminAuthMessage" class="message"></div>
+</form>
+</div>
+</div>
+
+<!-- ================= ADMIN PANEL MODAL ================= -->
+<div id="adminPanelModal" class="modal">
+<div class="modal-box" style="max-width: 950px;">
+<h2>لوحة تحكم الأدمن 🛠️</h2>
+
+<!-- ⚙️ إعدادات المنصة (رقم الكاش والمجتمعات) -->
+<h3 style="margin: 15px 0 10px; color: #d9ad55;">⚙️ إعدادات رقم فودافون كاش وروابط المجتمعات</h3>
+<form id="adminSettingsForm" style="background: #080f1d; padding: 15px; border-radius: 12px; border: 1px solid #233044; margin-bottom: 20px;">
+    <label style="font-size: 13px; color: #d9ad55;">رقم فودافون كاش للطلبة:</label>
+    <input class="input" id="adminVodafoneInput" type="text" placeholder="مثال: 01069343051" required>
+    
+    <label style="font-size: 13px; color: #d9ad55;">رابط جروب التليجرام الرسمي:</label>
+    <input class="input" id="adminTelegramInput" type="url" placeholder="https://t.me/yourgroup" required>
+    
+    <label style="font-size: 13px; color: #d9ad55;">رابط مجتمع الواتساب الرسمي:</label>
+    <input class="input" id="adminWhatsappInput" type="url" placeholder="https://chat.whatsapp.com/yourgroup" required>
+    
+    <button class="btn btn-gold" type="submit" style="width: 100%;">حفظ وإصدار التعديلات للموقع 💾</button>
+</form>
+
+<hr style="border-color: #2c3b54; margin: 20px 0;">
+
+<!-- 1. مراجعة إيصالات فودافون كاش وتفعيل الاشتراكات -->
+<h3 style="margin: 15px 0 10px; color: #d9ad55;">💳 طلبات الشراء وإيصالات فودافون كاش المعلقة</h3>
+<div style="max-height: 220px; overflow-y: auto;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>اسم الطالب</th>
+                <th>الكورس</th>
+                <th>إيصال التحويل</th>
+                <th>الحالة</th>
+                <th>الإجراء والتفعيل</th>
+            </tr>
+        </thead>
+        <tbody id="adminPaymentsTableBody">
+            <tr><td colspan="5" style="text-align:center;">جاري تحميل طلبات الدفع...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<hr style="border-color: #2c3b54; margin: 20px 0;">
+
+<!-- 2. تقييم مشاريع الطلاب والشهادات -->
+<h3 style="margin: 15px 0 10px; color: #d9ad55;">🎓 مراجعة مشاريع الطلاب وتقييمها</h3>
+<div style="max-height: 200px; overflow-y: auto;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>اسم الطالب</th>
+                <th>المشروع</th>
+                <th>الرابط</th>
+                <th>التقييم الحالي</th>
+                <th>الإجراء</th>
+            </tr>
+        </thead>
+        <tbody id="adminProjectsTableBody">
+            <tr><td colspan="5" style="text-align:center;">جاري تحميل المشاريع...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<hr style="border-color: #2c3b54; margin: 20px 0;">
+
+<!-- 3. إضافة وتعديل الكورسات -->
+<h3 style="margin: 15px 0 10px; color: #d9ad55;">📚 إدارة الكورسات والمحتوى</h3>
+<div style="max-height: 180px; overflow-y: auto;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>عنوان الكورس</th>
+                <th>اللغة / المسار</th>
+                <th>النوع / السعر</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+        <tbody id="adminCoursesTableBody">
+            <tr><td colspan="4" style="text-align:center;">جاري تحميل الكورسات...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h3 style="margin: 20px 0 10px; color: #d9ad55;">➕ إضافة كورس جديد للمنصة</h3>
+<form id="addCourseForm">
+    <input class="input" id="courseTitle" type="text" placeholder="عنوان الكورس" required>
+    <input class="input" id="courseLang" type="text" placeholder="رمز / لغة الكورس (مثال: Python, React)" required>
+    <textarea class="input" id="courseDesc" placeholder="وصف الكورس" required></textarea>
+    <select class="input" id="courseType">
+        <option value="free">مجاني 🎁</option>
+        <option value="paid">مدفوع 🔒 (فودافون كاش)</option>
+    </select>
+    <input class="input" id="coursePrice" type="text" placeholder="سعر الكورس بالجنيه (مثال: 150 ج.م)" style="display:none;">
+    <input class="input" id="courseLink" type="url" placeholder="رابط المحتوى / قائمة التشغيل" required>
+    <button class="btn btn-gold" type="submit">حفظ وإضافة الكورس للموقع</button>
+</form>
+
+<hr style="border-color: #2c3b54; margin: 20px 0;">
+
+<!-- 4. قائمة الطلاب -->
+<h3 style="margin: 15px 0 10px; color: #d9ad55;">👨‍🎓 المسجلين بالمنصة</h3>
+<div style="max-height: 150px; overflow-y: auto;">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>الاسم</th>
+                <th>الإيميل</th>
+                <th>الهاتف</th>
+            </tr>
+        </thead>
+        <tbody id="studentsTableBody">
+            <tr><td colspan="3" style="text-align:center;">جاري تحميل البيانات...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<button class="btn" id="closeAdminPanel" style="margin-top: 20px; width: 100%;">إغلاق اللوحة</button>
+</div>
+</div>
+
+<!-- ================= EVALUATE PROJECT MODAL (ADMIN) ================= -->
+<div id="evalModal" class="modal">
+<div class="modal-box">
+<h2>تقييم المشروع وتوليد الشهادة 📜</h2>
+<form id="evalForm">
+    <input type="hidden" id="evalProjId">
+    <label style="font-size: 14px; color: #aab4c4;">التقدير / الدرجة:</label>
+    <select class="input" id="evalGrade">
+        <option value="ممتاز مرتفع 🌟">ممتاز مرتفع 🌟</option>
+        <option value="ممتاز 🥇">ممتاز 🥇</option>
+        <option value="جيد جداً 🥈">جيد جداً 🥈</option>
+        <option value="جيد 🥉">جيد 🥉</option>
+    </select>
+    
+    <label style="font-size: 14px; color: #aab4c4;">ملاحظات ونقد المشروع (الأخطاء والنقاط الإيجابية):</label>
+    <textarea class="input" id="evalFeedback" placeholder="اكتب ملاحظاتك وتقييمك الفني للطالب..." rows="4" required></textarea>
+    
+    <button class="btn btn-gold" type="submit" style="width: 100%;">اعتماد التقييم وإصدار الشهادة</button>
+</form>
+</div>
+</div>
+
+<!-- ================= ADD PROJECT MODAL ================= -->
+<div id="projectModal" class="modal">
+<div class="modal-box">
+<h2>رفع مشروع جديد للمراجعة 🚀</h2>
+<form id="addProjectForm">
+<input class="input" id="projCourseName" type="text" placeholder="اسم المسار / الكورس (مثال: مسار Front-End)" required>
+<input class="input" id="projTitle" type="text" placeholder="عنوان مشروعك" required>
+<textarea class="input" id="projDesc" placeholder="شرح مختصر للمشروع والتقنيات المستخدمة" required></textarea>
+<input class="input" id="projLink" type="url" placeholder="رابط المشروع (GitHub / Live Demo)" required>
+<button class="btn btn-gold" type="submit" style="width: 100%;">إرسال المشروع للمراجعة</button>
+</form>
+</div>
+</div>
+
+<!-- ================= VIEW CERTIFICATE MODAL ================= -->
+<div id="certModal" class="modal">
+<div class="modal-box" style="max-width: 650px;">
+    <div id="certificatePrintable" class="certificate-container">
+        <h2 style="color: #d9ad55; letter-spacing: 2px;">CODEVERSE ACADEMY</h2>
+        <div class="certificate-subtitle">OFFICIAL CERTIFICATE OF COMPLETION</div>
+        <div class="certificate-title">شهادة إتمام وتفوق معتمدة</div>
+        <p style="margin-top: 15px; color: #555;">تشهد إدارة الأكاديمية بأن الطالب/ـة:</p>
+        <div class="certificate-name" id="certStudentName">اسم الطالب</div>
+        <p style="color: #444;">قد أتم بنجاح ومثالية متطلبات ومشاريع مسار:</p>
+        <h3 id="certCourseTitle" style="color: #0b1326; margin: 10px 0; font-size: 20px;">اسم المسار</h3>
+        <p style="color: #444;">وبعد التقييم والمراجعة الدقيقة لمشروعه، حصل على تقدير:</p>
+        <div id="certGrade" style="font-size: 20px; font-weight: bold; color: #1b4332; margin: 10px 0;">ممتاز</div>
+        
+        <div style="display: flex; justify-content: space-between; margin-top: 30px; border-top: 2px solid #d9ad55; padding-top: 15px;">
+            <div style="text-align: right;">
+                <small style="color: #777;">تاريخ الإصدار</small><br>
+                <strong id="certDate">2026-09-01</strong>
+            </div>
+            <div style="text-align: left;">
+                <small style="color: #777;">توقيع اعتماد الأكاديمية</small><br>
+                <strong style="color: #d9ad55;">Eng. Wael Mohamed</strong>
+            </div>
+        </div>
+    </div>
+    
+    <button class="btn btn-gold" id="downloadCertPngBtn" style="width: 100%; margin-top: 20px;">تحميل الشهادة كصورة PNG 🖼️</button>
+    <button class="btn" onclick="window.print()" style="width: 100%; margin-top: 10px;">طباعة / طباعة كـ PDF 🖨️</button>
+    <button class="btn btn-danger" onclick="document.getElementById('certModal').classList.remove('active')" style="width: 100%; margin-top: 10px;">إغلاق</button>
+</div>
+</div>
+
+<!-- ================= FIREBASE MODULES ================= -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { 
+    getAuth, 
+    signInWithEmailAndPassword, 
+    createUserWithEmailAndPassword,
+    onAuthStateChanged, 
+    signOut,
+    updateProfile 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { 
+    getFirestore, 
+    doc, 
+    setDoc, 
+    getDoc,
+    updateDoc,
+    deleteDoc,
+    collection, 
+    getDocs, 
+    addDoc, 
+    query, 
+    where,
+    orderBy, 
+    onSnapshot, 
+    serverTimestamp 
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBdOV7EbK3B1rIPuZwwlmWcRQgqhll2fWE",
+    authDomain: "engineer-cbfad.firebaseapp.com",
+    projectId: "engineer-cbfad",
+    storageBucket: "engineer-cbfad.firebasestorage.app",
+    messagingSenderId: "685427224388",
+    appId: "1:685427224388:web:aa03e638dc4557889b7111",
+    measurementId: "G-W17VS88H4H"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Helper function to prevent XSS
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+    });
+}
+
+// Global state variables
+let currentUserSubscriptions = [];
+let siteSettings = {
+    vodafoneNumber: "01069343051",
+    telegramLink: "https://t.me/201069343051",
+    whatsappLink: "https://wa.me/201069343051"
+};
+
+// SIDEBAR TOGGLE LOGIC
+const openSidebarBtn = document.getElementById("openSidebarBtn");
+const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+const sidebar = document.getElementById("sidebar");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+function toggleSidebar() {
+    sidebar.classList.toggle("active");
+    sidebarOverlay.classList.toggle("active");
+}
+
+openSidebarBtn.onclick = toggleSidebar;
+closeSidebarBtn.onclick = toggleSidebar;
+sidebarOverlay.onclick = toggleSidebar;
+
+// DOM ELEMENTS
+const loginButton = document.getElementById("loginButton");
+const loginModal = document.getElementById("loginModal");
+const loginForm = document.getElementById("loginForm");
+const loginMessage = document.getElementById("loginMessage");
+const toggleAuthMode = document.getElementById("toggleAuthMode");
+const authTitle = document.getElementById("authTitle");
+const authName = document.getElementById("authName");
+const authPhone = document.getElementById("authPhone");
+
+const adminModalBtn = document.getElementById("adminModalBtn");
+const adminAuthModal = document.getElementById("adminAuthModal");
+const adminAuthForm = document.getElementById("adminAuthForm");
+const adminPassInput = document.getElementById("adminPassInput");
+const adminAuthMessage = document.getElementById("adminAuthMessage");
+const adminPanelModal = document.getElementById("adminPanelModal");
+const closeAdminPanel = document.getElementById("closeAdminPanel");
+
+const adminSettingsForm = document.getElementById("adminSettingsForm");
+const addCourseForm = document.getElementById("addCourseForm");
+const courseTypeSelect = document.getElementById("courseType");
+const coursePriceInput = document.getElementById("coursePrice");
+
+const chatForm = document.getElementById("chatForm");
+const chatInput = document.getElementById("chatInput");
+const chatMessages = document.getElementById("chatMessages");
+
+const addProjectBtn = document.getElementById("addProjectBtn");
+const projectModal = document.getElementById("projectModal");
+const addProjectForm = document.getElementById("addProjectForm");
+
+const paymentModal = document.getElementById("paymentModal");
+const paymentForm = document.getElementById("paymentForm");
+
+const evalModal = document.getElementById("evalModal");
+const evalForm = document.getElementById("evalForm");
+
+let isSignUp = false;
+
+// Dynamic Price Input Toggle
+courseTypeSelect.onchange = () => {
+    if(courseTypeSelect.value === "paid") {
+        coursePriceInput.style.display = "block";
+        coursePriceInput.required = true;
+    } else {
+        coursePriceInput.style.display = "none";
+        coursePriceInput.required = false;
+    }
+};
+
+/* ================= FULL-STACK COMPREHENSIVE COURSES ROADMAP ================= */
+const fullStackRoadmap = [
+    // --- Front-End Track ---
+    { id: "fs_html", title: "أساسيات هيكلة الويب - HTML & HTML5", lang: "HTML", desc: "تعلم لبنة البناء الأولى للويب، وكيفية بناء مستندات متكاملة وصحيحة بنسبة 100%.", type: "free", price: "0", link: "https://elzero.org/category/courses/html-course/" },
+    { id: "fs_css", title: "التنسيق المتقدم والاستجابة - CSS3", lang: "CSS", desc: "تصميم الواجهات الجذابة، التحكم بالمخططات Flexbox & Grid والتجاوب التام مع الشاشات.", type: "free", price: "0", link: "https://elzero.org/category/courses/css-course/" },
+    { id: "fs_js", title: "لغة التفاعل والتفكير المنطقي - JS Bootcamp", lang: "JS", desc: "المسار الأضخم لبناء البرمجيات التفاعلية، فهم DOM, Async, Fetch APIs والـ ES6+.", type: "free", price: "0", link: "https://elzero.org/category/courses/javascript-bootcamp/" },
+    { id: "fs_react", title: "إطار العمل المتقدم - React.js", lang: "React", desc: "بناء واجهات المستخدم الحديثة المعتمدة على Component Architecture وتطبيقات SPA.", type: "free", price: "0", link: "https://elzero.org/category/courses/react-js-course/" },
+    { id: "fs_next", title: "إطار عمل الإنتاج - Next.js", lang: "Next.js", desc: "احتراف Server-Side Rendering (SSR), Static Site Generation ورفع أداء المحركات SEO.", type: "free", price: "0", link: "https://www.youtube.com/playlist?list=PLDoPjvoZm544n3nUBo0o5-7Hchvng0hfg" },
+    { id: "fs_ts", title: "البرمجة متقدمة الأنواع - TypeScript", lang: "TS", desc: "إضافة الأنواع الصارمة للـ JavaScript لمنع الأخطاء في التطبيقات الكبيرة والمؤسسية.", type: "free", price: "0", link: "https://elzero.org/category/courses/typescript-course/" },
+    { id: "fs_sass", title: "معالجة التنسيقات - Sass / SCSS", lang: "Sass", desc: "استخدام Variables, Mixins, Nesting لتسريع وتنظيم أكواد التنسيق المعقدة.", type: "free", price: "0", link: "https://elzero.org/category/courses/sass-course/" },
+    { id: "fs_tailwind", title: "تنسيق السرعة العالية - Tailwind CSS", lang: "Tailwind", desc: "بناء الواجهات بسرعة استثنائية باستخدام Utility-first CSS Framework.", type: "free", price: "0", link: "https://www.youtube.com/results?search_query=tailwind+css+course+arabic" },
+
+    // --- Back-End & Databases Track ---
+    { id: "fs_node", title: "مسار الباك إند - Node.js & Express.js", lang: "Node.js", desc: "بناء الخوادم السريعة جداً والـ RESTful APIs والتعامل مع السيرفرات بـ JS.", type: "free", price: "0", link: "https://elzero.org/category/courses/nodejs-course/" },
+    { id: "fs_php", title: "برمجة السيرفرات الديناميكية - PHP", lang: "PHP", desc: "تعلم برمجة قواعد البيانات والمواقع التفاعلية وأنظمة إدارة المحتوى المتقدمة.", type: "free", price: "0", link: "https://elzero.org/category/courses/php-course/" },
+    { id: "fs_laravel", title: "إطار عمل الباك إند الإحترافي - Laravel", lang: "Laravel", desc: "بناء المشاريع الضخمة، أنظمة الحماية authentication وقواعد البيانات المتقدمة.", type: "free", price: "0", link: "https://www.youtube.com/results?search_query=laravel+full+course+arabic" },
+    { id: "fs_python", title: "لغة البرمجة والأتمتة - Python", lang: "Python", desc: "تعلم بايثون من الأساسيات حتى البرمجة الكائنية وأنظمة الباك إند والتفكير البرمجي.", type: "free", price: "0", link: "https://elzero.org/category/courses/python-course/" },
+    { id: "fs_django", title: "تطوير الويب الـ Full-Stack - Python Django", lang: "Django", desc: "بناء تطبيقات ومواقع كاملة باستخدام قوة وسرعة إطار عمل Django.", type: "free", price: "0", link: "https://www.youtube.com/results?search_query=django+full+course+arabic" },
+    { id: "fs_mysql", title: "قواعد البيانات العلاقية - MySQL & SQL", lang: "SQL", desc: "تصميم وتنظيم قواعد البيانات، كتابة Queries واستخراج البيانات المعقدة بكفاءة.", type: "free", price: "0", link: "https://elzero.org/category/courses/mysql-course/" },
+
+    // --- CS & Tools Track ---
+    { id: "fs_cpp", title: "أساسيات علوم الحاسب والتفكير - C++", lang: "C++", desc: "تأسيس التفكير البرمجي المتين، إدارة الذاكرة وحل المشكلات المعقدة.", type: "free", price: "0", link: "https://www.youtube.com/playlist?list=PLDoPjvoZm544n3nUBo0o5-7Hchvng0hfg" },
+    { id: "fs_oop", title: "البرمجة كائنية التوجه - OOP", lang: "OOP", desc: "مفاهيم Encapsulation, Inheritance, Polymorphism وتنظيم كود المشاريع.", type: "free", price: "0", link: "https://elzero.org/category/courses/oop-course/" },
+    { id: "fs_git", title: "إدارة الإصدارات والمشاريع - Git & GitHub", lang: "Git", desc: "إدارة إصدارات الأكواد والرفع على GitHub والعمل الجماعي بفرق البرمجة الاحترافية.", type: "free", price: "0", link: "https://elzero.org/category/courses/git-and-github/" }
+];
+
+/* LOAD SETTINGS & GROUPS */
+async function loadSiteSettings() {
+    try {
+        const docRef = doc(db, "settings", "general");
+        const docSnap = await getDoc(docRef);
+        if(docSnap.exists()) {
+            siteSettings = { ...siteSettings, ...docSnap.data() };
+        }
+    } catch(e) { console.warn("Using default settings", e); }
+    
+    // Update Vodafone Cash UI display
+    document.getElementById("vodafoneNumberDisplay").textContent = siteSettings.vodafoneNumber;
+    document.getElementById("adminVodafoneInput").value = siteSettings.vodafoneNumber;
+    document.getElementById("adminTelegramInput").value = siteSettings.telegramLink;
+    document.getElementById("adminWhatsappInput").value = siteSettings.whatsappLink;
+    
+    loadStudentGroups();
+}
+
+function loadStudentGroups(){
+    const container = document.getElementById("studentGroupsContainer");
+    container.innerHTML = `
+        <div class="card">
+            <h3 style="color:#d9ad55;">جروب التليجرام الرسمي 🚀</h3>
+            <p>انضم لمناقشة التكليفات والدعم الفني المباشر واستقبال التنبيهات.</p>
+            <a href="${siteSettings.telegramLink}" target="_blank" class="btn btn-gold" style="margin-top:15px; text-align:center;">انضمام للتليجرام ✈️</a>
+        </div>
+        <div class="card">
+            <h3 style="color:#72efdd;">مجتمع الواتساب 🟢</h3>
+            <p>لتلقي الإشعارات والمسارات البرمجية أولاً بأول.</p>
+            <a href="${siteSettings.whatsappLink}" target="_blank" class="btn btn-gold" style="margin-top:15px; text-align:center;">انضمام للواتساب 💬</a>
+        </div>
+    `;
+}
+
+/* AUTH LOGIC */
+loginButton.onclick = (e) => {
+    e.preventDefault();
+    if(sidebar.classList.contains("active")) toggleSidebar();
+    if(auth.currentUser){
+        signOut(auth);
+    } else {
+        loginModal.classList.add("active");
+    }
+};
+
+toggleAuthMode.onclick = () => {
+    isSignUp = !isSignUp;
+    if(isSignUp){
+        authTitle.textContent = "إنشاء حساب جديد";
+        authName.style.display = "block";
+        authName.required = true;
+        authPhone.style.display = "block";
+        authPhone.required = true;
+        toggleAuthMode.textContent = "لديك حساب بالفعل؟ تسجيل الدخول";
+    } else {
+        authTitle.textContent = "تسجيل الدخول";
+        authName.style.display = "none";
+        authName.required = false;
+        authPhone.style.display = "none";
+        authPhone.required = false;
+        toggleAuthMode.textContent = "ليس لديك حساب؟ إنشاء حساب جديد";
+    }
+};
+
+loginForm.onsubmit = async (e) => {
+    e.preventDefault();
+    loginMessage.textContent = "جاري المعالجة...";
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+    const name = authName.value.trim();
+    const phone = authPhone.value.trim();
+
+    try {
+        if(isSignUp) {
+            const userCred = await createUserWithEmailAndPassword(auth, email, password);
+            await updateProfile(userCred.user, { displayName: name });
+            await setDoc(doc(db, "users", userCred.user.uid), {
+                uid: userCred.user.uid,
+                name: name,
+                email: email,
+                phone: phone,
+                subscriptions: [],
+                createdAt: serverTimestamp()
+            });
+        } else {
+            await signInWithEmailAndPassword(auth, email, password);
+        }
+        loginModal.classList.remove("active");
+        loginMessage.textContent = "";
+        loginForm.reset();
+    } catch(err) {
+        console.error(err);
+        loginMessage.textContent = "خطأ: " + err.message;
+    }
+};
+
+onAuthStateChanged(auth, async (user) => {
+    if(user){
+        loginButton.textContent = "تسجيل الخروج (" + (user.displayName || "طالب") + ")";
+        try {
+            const uDoc = await getDoc(doc(db, "users", user.uid));
+            if(uDoc.exists()) {
+                currentUserSubscriptions = uDoc.data().subscriptions || [];
+            }
+        } catch(e) { console.error(e); }
+    } else {
+        loginButton.textContent = "تسجيل الدخول";
+        currentUserSubscriptions = [];
+    }
+    loadCourses();
+    loadProjectsList();
+});
+
+/* ADMIN ACCESS & SETTINGS */
+adminModalBtn.onclick = (e) => {
+    e.preventDefault();
+    if(sidebar.classList.contains("active")) toggleSidebar();
+    adminAuthModal.classList.add("active");
+};
+
+adminAuthForm.onsubmit = (e) => {
+    e.preventDefault();
+    if(adminPassInput.value === "wael1234"){
+        adminAuthModal.classList.remove("active");
+        adminPanelModal.classList.add("active");
+        adminAuthMessage.textContent = "";
+        adminPassInput.value = "";
+        loadAdminPaymentsList();
+        loadAdminProjectsList();
+        loadAdminCoursesList();
+        loadStudentsList();
+    } else {
+        adminAuthMessage.textContent = "كلمة السر غير صحيحة!";
+    }
+};
+
+closeAdminPanel.onclick = () => adminPanelModal.classList.remove("active");
+
+adminSettingsForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const newVodafone = document.getElementById("adminVodafoneInput").value.trim();
+    const newTelegram = document.getElementById("adminTelegramInput").value.trim();
+    const newWhatsapp = document.getElementById("adminWhatsappInput").value.trim();
+
+    try {
+        await setDoc(doc(db, "settings", "general"), {
+            vodafoneNumber: newVodafone,
+            telegramLink: newTelegram,
+            whatsappLink: newWhatsapp,
+            updatedAt: serverTimestamp()
+        });
+        alert("تم حفظ إعدادات المنصة بنجاح!");
+        loadSiteSettings();
+    } catch(err) { alert("حدث خطأ: " + err.message); }
+};
+
+/* REAL-TIME ADMIN NOTIFICATIONS FOR PAYMENTS */
+let initialPaymentLoad = true;
+function listenToPaymentNotifications() {
+    const q = query(collection(db, "payment_requests"), where("status", "==", "pending"));
+    onSnapshot(q, (snapshot) => {
+        const badge = document.getElementById("adminPendingBadge");
+        if (snapshot.docs.length > 0) {
+            badge.style.display = "inline-block";
+        } else {
+            badge.style.display = "none";
+        }
+
+        if (!initialPaymentLoad) {
+            snapshot.docChanges().forEach((change) => {
+                if (change.type === "added") {
+                    // Play notification chime
+                    try {
+                        const audio = new Audio("https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3");
+                        audio.play().catch(()=>{});
+                    } catch(e){}
+                    alert("🔔 تنبيه أدمن: وصل دفع جديد بحاجة للمراجعة من الطالب: " + change.doc.data().userName);
+                }
+            });
+        }
+        initialPaymentLoad = false;
+    });
+}
+listenToPaymentNotifications();
+
+/* COURSES SYSTEM */
+async function loadCourses(){
+    const container = document.getElementById("coursesContainer");
+    container.innerHTML = "";
+    
+    let allCourses = [...fullStackRoadmap];
+
+    try {
+        const snapshot = await getDocs(collection(db, "courses"));
+        if(!snapshot.empty){
+            snapshot.forEach(docSnap => {
+                const data = docSnap.data();
+                data.id = docSnap.id;
+                allCourses.push(data);
+            });
+        }
+    } catch(err) {
+        console.warn("تنبيه: تعذر جلب الكورسات الإضافية من السيرفر.", err);
+    }
+
+    allCourses.forEach(c => appendCourseCard(container, c));
+}
+
+function appendCourseCard(container, course){
+    const card = document.createElement("div");
+    card.className = "card";
+    
+    const isPaid = course.type === "paid";
+    const courseId = course.id || course.title;
+    const isSubscribed = currentUserSubscriptions.includes(courseId);
+    
+    let badgeClass = "badge-free";
+    let badgeText = "مجاني 🎁 (CodeVerse)";
+    
+    if(isPaid) {
+        if(isSubscribed) {
+            badgeClass = "badge-owned";
+            badgeText = "مفعل ومفتوح ✅";
+        } else {
+            badgeClass = "badge-paid";
+            badgeText = `مدفوع 🔒 (${course.price || '150'} ج.م)`;
+        }
+    }
+
+    let actionButton = '';
+    if(!isPaid || isSubscribed) {
+        actionButton = `<a href="${course.link}" target="_blank" class="btn btn-gold" style="text-align:center; margin-top: 15px;">بدء مشاهدة المسار 🚀</a>`;
+    } else {
+        actionButton = `<button class="btn btn-gold" onclick="openPaymentModal('${escapeHTML(courseId)}', '${escapeHTML(course.title)}', '${escapeHTML(course.price || '150 ج.م')}')" style="margin-top: 15px;">شراء المسار واشتراك (فودافون كاش) 💳</button>`;
+    }
+
+    card.innerHTML = `
+        <div>
+            <span class="badge-price ${badgeClass}">${badgeText}</span>
+            <div class="card-icon">${escapeHTML(course.language || course.lang)}</div>
+            <h3>${escapeHTML(course.title)}</h3>
+            <p>${escapeHTML(course.description || course.desc)}</p>
+        </div>
+        ${actionButton}
+    `;
+    container.appendChild(card);
+}
+
+/* PAYMENT FLOW (VODAFONE CASH) */
+window.openPaymentModal = (courseId, courseTitle, price) => {
+    if(!auth.currentUser) {
+        alert("يرجى تسجيل الدخول أولاً لتتمكن من إتمام عملية الدفع وفتح الكورس في حسابك!");
+        loginModal.classList.add("active");
+        return;
+    }
+    document.getElementById("payCourseId").value = courseId;
+    document.getElementById("payCourseTitle").value = courseTitle;
+    document.getElementById("paymentCoursePrice").textContent = price;
+    paymentModal.classList.add("active");
+};
+
+paymentForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const courseId = document.getElementById("payCourseId").value;
+    const courseTitle = document.getElementById("payCourseTitle").value;
+    const fileInput = document.getElementById("payReceiptImage");
+    const file = fileInput.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async function(event) {
+        const base64Receipt = event.target.result;
+        try {
+            await addDoc(collection(db, "payment_requests"), {
+                userId: auth.currentUser.uid,
+                userName: auth.currentUser.displayName || "طالب",
+                userEmail: auth.currentUser.email || "",
+                courseId: courseId,
+                courseTitle: courseTitle,
+                receiptImage: base64Receipt,
+                status: "pending",
+                createdAt: serverTimestamp()
+            });
+            alert("تم إرسال إيصال الدفع بنجاح! سيقوم م. وائل بمراجعة الإيصال وتفعيل الكورس في حسابك فوراً.");
+            paymentModal.classList.remove("active");
+            paymentForm.reset();
+        } catch(err) {
+            alert("حدث خطأ أثناء رفع الإيصال: " + err.message);
+        }
+    };
+    reader.readAsDataURL(file);
+};
+
+/* ADMIN PAYMENT REVIEW AND ACTIVATION */
+async function loadAdminPaymentsList(){
+    const tbody = document.getElementById("adminPaymentsTableBody");
+    try {
+        const snapshot = await getDocs(query(collection(db, "payment_requests"), orderBy("createdAt", "desc")));
+        tbody.innerHTML = "";
+        if(snapshot.empty){
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">لا توجد طلبات دفع معلقة حالياً.</td></tr>`;
+            return;
+        }
+        snapshot.forEach(docSnap => {
+            const req = docSnap.data();
+            const tr = document.createElement("tr");
+            
+            let statusText = req.status === "approved" 
+                ? `<span style="color:#72efdd; font-weight:bold;">مفعل ✅</span>` 
+                : (req.status === "rejected" ? `<span style="color:#ff9ebb;">مرفوض ❌</span>` : `<span style="color:#d9ad55;">قيد Review ⏳</span>`);
+
+            let actions = req.status === "pending" ? `
+                <button class="btn btn-success" onclick="approvePayment('${docSnap.id}', '${req.userId}', '${req.courseId}')" style="padding:3px 8px; font-size:12px;">تفعيل ✅</button>
+                <button class="btn btn-danger" onclick="rejectPayment('${docSnap.id}')" style="padding:3px 8px; font-size:12px; margin-top:4px;">رفض ❌</button>
+            ` : 'مكتمل';
+
+            tr.innerHTML = `
+                <td>${escapeHTML(req.userName)}</td>
+                <td>${escapeHTML(req.courseTitle)}</td>
+                <td><button class="btn" onclick="viewReceiptImage('${docSnap.id}')" style="padding:2px 6px; font-size:11px;">عرض الإيصال 🖼️</button></td>
+                <td>${statusText}</td>
+                <td>${actions}</td>
+            `;
+            tbody.appendChild(tr);
+            window[`receipt_${docSnap.id}`] = req.receiptImage;
+        });
+    } catch(err){ console.error(err); }
+}
+
+window.viewReceiptImage = (reqId) => {
+    const imgData = window[`receipt_${reqId}`];
+    if(imgData){
+        const w = window.open("");
+        w.document.write(`<img src="${imgData}" style="max-width:100%; height:auto;" />`);
+    }
+};
+
+window.approvePayment = async (reqId, userId, courseId) => {
+    if(confirm("هل تأكدت من وصول المبلغ وستقوم بتفعيل الكورس لهذا الطالب؟")) {
+        try {
+            await updateDoc(doc(db, "payment_requests", reqId), { status: "approved" });
+            const uRef = doc(db, "users", userId);
+            const uDoc = await getDoc(uRef);
+            if(uDoc.exists()) {
+                let subs = uDoc.data().subscriptions || [];
+                if(!subs.includes(courseId)) {
+                    subs.push(courseId);
+                    await updateDoc(uRef, { subscriptions: subs });
+                }
+            }
+            alert("تم تفعيل الكورس للطالب بنجاح!");
+            loadAdminPaymentsList();
+        } catch(e) { alert("حدث خطأ: " + e.message); }
+    }
+};
+
+window.rejectPayment = async (reqId) => {
+    if(confirm("هل تريد رفض طلب الدفع هذا؟")) {
+        try {
+            await updateDoc(doc(db, "payment_requests", reqId), { status: "rejected" });
+            alert("تم رفض الطلب.");
+            loadAdminPaymentsList();
+        } catch(e) { alert("حدث خطأ: " + e.message); }
+    }
+};
+
+/* PROJECTS AND CERTIFICATES SYSTEM */
+addProjectBtn.onclick = () => {
+    if(!auth.currentUser) {
+        alert("يرجى تسجيل الدخول أولاً لرفع مشروعك للتقييم!");
+        loginModal.classList.add("active");
+        return;
+    }
+    projectModal.classList.add("active");
+};
+
+addProjectForm.onsubmit = async (e) => {
+    e.preventDefault();
+    try {
+        await addDoc(collection(db, "projects"), {
+            userId: auth.currentUser.uid,
+            userName: auth.currentUser.displayName || "طالب",
+            courseName: document.getElementById("projCourseName").value,
+            title: document.getElementById("projTitle").value,
+            desc: document.getElementById("projDesc").value,
+            link: document.getElementById("projLink").value,
+            grade: "قيد المراجعة ⏳",
+            feedback: "",
+            createdAt: serverTimestamp()
+        });
+        alert("تم إرسال مشروعك للمراجعة والتقييم بنجاح!");
+        projectModal.classList.remove("active");
+        addProjectForm.reset();
+        loadProjectsList();
+    } catch(err) { alert("خطأ: " + err.message); }
+};
+
+async function loadProjectsList() {
+    const container = document.getElementById("projectsContainer");
+    try {
+        const snapshot = await getDocs(query(collection(db, "projects"), orderBy("createdAt", "desc")));
+        container.innerHTML = "";
+        if(snapshot.empty){
+            container.innerHTML = `<p style="text-align:center; color:#888; grid-column:1/-1;">لم يتم رفع أية مشاريع بعد. كن الأول واسترشد بمساراتنا!</p>`;
+            return;
+        }
+        snapshot.forEach(docSnap => {
+            const p = docSnap.data();
+            const card = document.createElement("div");
+            card.className = "card";
+            
+            let certButton = '';
+            if(p.grade && p.grade !== "قيد المراجعة ⏳") {
+                certButton = `<button class="btn btn-gold" onclick="viewCertificate('${escapeHTML(p.userName)}', '${escapeHTML(p.courseName)}', '${escapeHTML(p.grade)}')" style="margin-top:10px; width:100%;">استعراض الشهادة 📜</button>`;
+            }
+
+            card.innerHTML = `
+                <div>
+                    <span class="badge-price badge-free">${escapeHTML(p.courseName)}</span>
+                    <h3>${escapeHTML(p.title)}</h3>
+                    <p style="font-size:13px; color:#aaa; margin:5px 0;">الطالب: ${escapeHTML(p.userName)}</p>
+                    <p>${escapeHTML(p.desc)}</p>
+                    <a href="${p.link}" target="_blank" style="color:#d9ad55; font-size:13px; display:inline-block; margin-top:8px;">معاينة الكود / Direct Link 🔗</a>
+                    <div style="background:#080f1d; padding:8px; border-radius:8px; margin-top:10px; font-size:12px;">
+                        <b>التقييم:</b> <span style="color:#72efdd;">${escapeHTML(p.grade)}</span><br>
+                        ${p.feedback ? `<b>ملاحظات المهندس:</b> ${escapeHTML(p.feedback)}` : ''}
+                    </div>
+                </div>
+                ${certButton}
+            `;
+            container.appendChild(card);
+        });
+    } catch(err){ console.error(err); }
+}
+
+async function loadAdminProjectsList(){
+    const tbody = document.getElementById("adminProjectsTableBody");
+    try {
+        const snapshot = await getDocs(query(collection(db, "projects"), orderBy("createdAt", "desc")));
+        tbody.innerHTML = "";
+        if(snapshot.empty){
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">لا توجد مشاريع مرفوعة.</td></tr>`;
+            return;
+        }
+        snapshot.forEach(docSnap => {
+            const p = docSnap.data();
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${escapeHTML(p.userName)}</td>
+                <td>${escapeHTML(p.title)}</td>
+                <td><a href="${p.link}" target="_blank" style="color:#d9ad55;">رابط المشاهدة 🔗</a></td>
+                <td>${escapeHTML(p.grade)}</td>
+                <td><button class="btn btn-gold" onclick="openEvalModal('${docSnap.id}')" style="padding:3px 8px; font-size:12px;">تقييم وإخراج شهادة 📜</button></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } catch(err){ console.error(err); }
+}
+
+window.openEvalModal = (projId) => {
+    document.getElementById("evalProjId").value = projId;
+    evalModal.classList.add("active");
+};
+
+evalForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const projId = document.getElementById("evalProjId").value;
+    const grade = document.getElementById("evalGrade").value;
+    const feedback = document.getElementById("evalFeedback").value;
+
+    try {
+        await updateDoc(doc(db, "projects", projId), {
+            grade: grade,
+            feedback: feedback
+        });
+        alert("تم حفظ التقييم واعتماد الشهادة بنجاح!");
+        evalModal.classList.remove("active");
+        evalForm.reset();
+        loadAdminProjectsList();
+        loadProjectsList();
+    } catch(err) { alert("حدث خطأ: " + err.message); }
+};
+
+window.viewCertificate = (studentName, courseName, grade) => {
+    document.getElementById("certStudentName").textContent = studentName;
+    document.getElementById("certCourseTitle").textContent = courseName;
+    document.getElementById("certGrade").textContent = grade;
+    document.getElementById("certDate").textContent = new Date().toISOString().split('T')[0];
+    document.getElementById("certModal").classList.add("active");
+};
+
+document.getElementById("downloadCertPngBtn").onclick = () => {
+    const certElement = document.getElementById("certificatePrintable");
+    html2canvas(certElement, { scale: 2 }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "CodeVerse_Certificate.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    });
+};
+
+/* ADD AND MANAGE COURSES VIA ADMIN */
+addCourseForm.onsubmit = async (e) => {
+    e.preventDefault();
+    try {
+        await addDoc(collection(db, "courses"), {
+            title: document.getElementById("courseTitle").value,
+            language: document.getElementById("courseLang").value,
+            description: document.getElementById("courseDesc").value,
+            type: courseTypeSelect.value,
+            price: coursePriceInput.value || "0",
+            link: document.getElementById("courseLink").value,
+            createdAt: serverTimestamp()
+        });
+        alert("تمت إضافة الكورس بنجاح!");
+        addCourseForm.reset();
+        loadAdminCoursesList();
+        loadCourses();
+    } catch(err) { alert("خطأ: " + err.message); }
+};
+
+async function loadAdminCoursesList() {
+    const tbody = document.getElementById("adminCoursesTableBody");
+    try {
+        const snapshot = await getDocs(collection(db, "courses"));
+        tbody.innerHTML = "";
+        if(snapshot.empty){
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;">لا توجد كورسات مخصصة مضافة حالياً.</td></tr>`;
+            return;
+        }
+        snapshot.forEach(docSnap => {
+            const c = docSnap.data();
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${escapeHTML(c.title)}</td>
+                <td>${escapeHTML(c.language)}</td>
+                <td>${c.type === 'paid' ? `${c.price} ج.م` : 'مجاني'}</td>
+                <td><button class="btn btn-danger" onclick="deleteCourse('${docSnap.id}')" style="padding:2px 6px; font-size:11px;">حذف 🗑️</button></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } catch(e){ console.error(e); }
+}
+
+window.deleteCourse = async (courseId) => {
+    if(confirm("هل أنت متأكد من حذف هذا الكورس؟")) {
+        try {
+            await deleteDoc(doc(db, "courses", courseId));
+            alert("تم الحذف بنجاح.");
+            loadAdminCoursesList();
+            loadCourses();
+        } catch(e){ alert("خطأ: " + e.message); }
+    }
+};
+
+/* LOAD STUDENTS LIST */
+async function loadStudentsList() {
+    const tbody = document.getElementById("studentsTableBody");
+    try {
+        const snapshot = await getDocs(collection(db, "users"));
+        tbody.innerHTML = "";
+        if(snapshot.empty){
+            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;">لا يوجد طلاب مسجلين.</td></tr>`;
+            return;
+        }
+        snapshot.forEach(docSnap => {
+            const u = docSnap.data();
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${escapeHTML(u.name || "طالب")}</td>
+                <td>${escapeHTML(u.email)}</td>
+                <td>${escapeHTML(u.phone || "بدون رقم")}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } catch(e){ console.error(e); }
+}
+
+/* REAL-TIME STUDENT COMMUNITY CHAT */
+chatForm.onsubmit = async (e) => {
+    e.preventDefault();
+    if(!auth.currentUser) {
+        alert("يرجى تسجيل الدخول لتتمكن من مشاركة الرسائل والأسئلة البرمجية!");
+        loginModal.classList.add("active");
+        return;
+    }
+    const msgText = chatInput.value.trim();
+    if(!msgText) return;
+
+    try {
+        await addDoc(collection(db, "chat_messages"), {
+            sender: auth.currentUser.displayName || "طالب",
+            text: msgText,
+            createdAt: serverTimestamp()
+        });
+        chatInput.value = "";
+    } catch(err) { alert("حدث خطأ أثناء الإرسال: " + err.message); }
+};
+
+function listenToCommunityChat() {
+    const q = query(collection(db, "chat_messages"), orderBy("createdAt", "asc"));
+    onSnapshot(q, (snapshot) => {
+        chatMessages.innerHTML = "";
+        snapshot.forEach(docSnap => {
+            const msg = docSnap.data();
+            const msgDiv = document.createElement("div");
+            msgDiv.className = "chat-msg";
+            msgDiv.innerHTML = `
+                <div class="sender">${escapeHTML(msg.sender)}</div>
+                <div class="text">${escapeHTML(msg.text)}</div>
+            `;
+            chatMessages.appendChild(msgDiv);
+        });
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+}
+
+// INITIALIZE APP
+loadSiteSettings();
+listenToCommunityChat();
+
+</script>
+</body>
+</html>
